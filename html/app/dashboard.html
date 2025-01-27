@@ -1,0 +1,1963 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            height: 54px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .search-bar {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            width: 250px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666666;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .login-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: none;
+            color: #666666;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .register-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background-color: #2C5CC5;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .header {
+            position: relative;
+            padding: 4rem 2rem;
+            height: 850px;
+            overflow: hidden;
+            border-radius: 0 0 100% 100%;
+        }
+
+        .header-left {
+            position: absolute;
+            top: 50%;
+            left: 2rem;
+            transform: translateY(-50%);
+            max-width: 800px;
+            z-index: 2;
+            text-align: left;
+        }
+
+        .header-right {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .header-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header-left h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 48px;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: #F4A424;
+        }
+
+        .header-left h1 span {
+            color: #2B9BF4;
+        }
+
+        .header-left p {
+            color: #4F5665;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .join-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #2B9BF4;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            margin-left: 2rem;
+        }
+
+        .join-button:hover {
+            background-color: #2589db;
+        }
+
+        .trusted-section {
+            text-align: center;
+            padding: 4rem 0;
+            background-color: #fff;
+        }
+
+        .trusted-section p {
+            color: #666;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .company-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .company-logos img {
+            height: 30px;
+            object-fit: contain;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+
+        .company-logos img:hover {
+            opacity: 1;
+        }
+
+        .what-is-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .what-is-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 42px;
+            margin-bottom: 1.5rem;
+            color: #F4A424;
+        }
+
+        .what-is-section h2 span {
+            color: #2B9BF4;
+        }
+
+        .what-is-section p {
+            color: #4F5665;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .role-cards {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .role-card {
+            flex: 1;
+            max-width: 500px;
+            height: 300px;
+            border-radius: 32px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .role-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%);
+            z-index: 1;
+        }
+
+        .role-card.instructor {
+            background-image: url('../../images/Group-22.png');
+        }
+
+        .role-card.student {
+            background-image: url('../../images/Group-23.png');
+        }
+
+        .role-card h3 {
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .role-btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            background: linear-gradient(to right, rgba(163, 163, 163, 0.9), rgba(58, 58, 58, 0.9));
+            color: #ffffff;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .role-btn:hover {
+            background: linear-gradient(to right, rgba(43, 155, 244, 1), rgba(43, 155, 244, 0.9));
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .classroom-section {
+            display: flex;
+            align-items: center;
+            padding: 4rem 2rem;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .classroom-content {
+            flex: 1;
+            position: relative;
+        }
+
+        /* Add orange circle decorator */
+        .classroom-content::before {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #F4A424;
+            border-radius: 50%;
+            left: -30px;
+            top: -20px;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .classroom-content h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 42px;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: #333;
+        }
+
+        .classroom-content h2 span {
+            color: #F4A424;
+            display: block;
+        }
+
+        .classroom-content p {
+            color: #4F5665;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .classroom-content strong {
+            color: #333;
+        }
+
+        .learn-more {
+            display: inline-block;
+            text-decoration: none;
+            color: #2B9BF4;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .classroom-image {
+            flex: 1;
+            position: relative;
+        }
+
+        /* Add blue decorator at top */
+        .classroom-image::before {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-color: #21C8F6;
+            border-radius: 24px;
+            right: 430px;
+            top: 50px;
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        /* Add orange decorator at bottom */
+        .classroom-image::after {
+            content: '';
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background-color: #F4A424;
+            border-radius: 24px;
+            right: 50px;
+            bottom: 50px;
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        .classroom-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .learning-path-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: #fff;
+        }
+
+        .learning-path-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 42px;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .learning-path-section p {
+            color: #4F5665;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .partner-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .partner-badges img {
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .company-path-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E5E5;
+            border-radius: 8px;
+            padding: 1.5rem;
+            width: 200px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-card img {
+            max-width: 150px;
+            max-height: 50px;
+            object-fit: contain;
+        }
+
+        /* Add these new styles */
+        .learning-paths {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem auto;
+            max-width: 1400px;
+            padding: 0 2rem;
+        }
+
+        .path-card {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .path-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .path-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .path-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%);
+        }
+
+        .path-card .badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            z-index: 2;
+        }
+
+        .path-card h3 {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            z-index: 2;
+            margin: 0;
+        }
+
+        .fullstack-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 4rem;
+        }
+
+        .fullstack-left {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .fullstack-right {
+            flex: 2;
+            overflow-x: auto;  /* Enable horizontal scroll */
+            /* Hide scrollbar for Chrome, Safari and Opera */
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            /* Hide scrollbar for IE, Edge and Firefox */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .learning-cards {
+            display: flex;  /* Changed from grid to flex */
+            gap: 2rem;
+            min-width: min-content; /* Ensures cards don't shrink */
+        }
+
+        .learning-card {
+            flex: 0 0 300px; /* Don't grow, don't shrink, fixed width */
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            position: relative;
+        }
+
+        .card-header img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .level-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255,255,255,0.9);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .progress-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: #E5E5E5;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: #2B9BF4;
+            border-radius: 4px;
+        }
+
+        .progress-info span {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #666;
+        }
+
+        @media (max-width: 1024px) {
+            .fullstack-section {
+                flex-direction: column;
+            }
+
+            .fullstack-left {
+                max-width: 100%;
+            }
+        }
+
+        .instructor-card {
+            height: 280px;
+            width: 280px;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .student-card {
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            width: 140px;
+            height: 140px;
+        }
+
+        .student-card.top-left {
+            border-radius: 16px;
+            transform: translateY(20px);
+        }
+
+        .student-card.top-right {
+            border-radius: 24px;
+            transform: translate(-10px, 10px);
+        }
+
+        .student-card.bottom-left {
+            border-radius: 20px;
+            transform: translate(15px, -10px);
+        }
+
+        .student-card.bottom-right {
+            border-radius: 28px;
+            transform: translate(-20px, -15px);
+        }
+
+        .instructor-card img,
+        .student-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .students-container {
+            display: grid;
+            grid-template-columns: repeat(2, 140px);
+            gap: 30px;
+            position: relative;
+            margin-left: 40px;
+        }
+
+        .students-container::before {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: #4AE6B5;
+            border-radius: 50%;
+            top: -40px;
+            left: -60px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .students-container::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: #6C63FF;
+            border-radius: 50%;
+            bottom: -50px;
+            right: -50px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .video-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .students-container {
+                margin-left: 0;
+                margin-top: 30px;
+            }
+            
+            .student-card {
+                transform: none !important;
+            }
+        }
+
+.features {
+    padding: 100px 0;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.features-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.features-header h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 42px;
+    color: #2B9BF4;
+    margin-bottom: 20px;
+}
+
+.features-header h2 span {
+    color: #F4A424;
+}
+
+.features-header p {
+    color: #666;
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.features-content {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.features-image {
+    flex: 1;
+    position: relative;
+}
+
+.decorative-circle {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: #4AE6B5;
+    opacity: 0.2;
+    border-radius: 50%;
+    top: -40px;
+    left: -40px;
+    z-index: 0;
+}
+
+.decorative-dot {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #2B9BF4;
+    opacity: 0.3;
+    border-radius: 50%;
+    top: 20px;
+    right: 60px;
+}
+
+.video-window {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.window-header {
+    background: #f8f9fa;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.window-controls span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ddd;
+}
+
+.window-controls span:nth-child(1) { background: #ff5f57; }
+.window-controls span:nth-child(2) { background: #febc2e; }
+.window-controls span:nth-child(3) { background: #28c840; }
+
+.video-grid {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.instructor-wrapper {
+    flex: 0 0 300px;
+    height: 400px;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.instructor-card {
+    height: 280px;
+    width: 280px;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.instructor-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-tag {
+    background: #4361ee;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.btn-present, .btn-call {
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.2s;
+}
+
+.btn-present {
+    background: #4361ee;
+}
+
+.btn-call {
+    background: #ff4d6d;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-present:hover, .btn-call:hover {
+    transform: translateY(-2px);
+}
+
+.students-container {
+    display: grid;
+    grid-template-columns: repeat(2, 140px);
+    gap: 30px;
+    position: relative;
+    margin-left: 40px;
+}
+
+.student-card {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    width: 140px;
+    height: 140px;
+}
+
+.student-card.top-left {
+    border-radius: 16px;
+    transform: translateY(20px);
+}
+
+.student-card.top-right {
+    border-radius: 24px;
+    transform: translate(-10px, 10px);
+}
+
+.student-card.bottom-left {
+    border-radius: 20px;
+    transform: translate(15px, -10px);
+}
+
+.student-card.bottom-right {
+    border-radius: 28px;
+    transform: translate(-20px, -15px);
+}
+
+.student-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+}
+
+.signal-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255,255,255,0.9);
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.student-name {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(255,255,255,0.9);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.features-text {
+    flex: 1;
+}
+
+.features-text h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 36px;
+    color: #2B2F4A;
+    margin-bottom: 15px;
+}
+
+.features-text .modules {
+    color: #F4A424;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.features-text p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    .video-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .students-container {
+        margin-left: 0;
+        margin-top: 30px;
+    }
+    
+    .student-card {
+        transform: none !important;
+    }
+}
+
+.progress-tracking {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-tracking .features-content {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.progress-tracking .features-text {
+    flex: 1;
+    max-width: 500px;
+}
+
+.progress-tracking h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 42px;
+    color: #2B2F4A;
+    margin-bottom: 20px;
+}
+
+.progress-tracking .orange-text {
+    color: #F4A424;
+}
+
+.progress-tracking p {
+    color: #666;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.progress-tracking .features-image {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.progress-tracking .features-image img {
+    max-width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.floating-icon {
+    position: absolute;
+    font-size: 24px;
+    padding: 12px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    z-index: 3;
+}
+
+.icon1 {
+    top: 10%;
+    right: 15%;
+    animation: float 3s ease-in-out infinite;
+}
+
+.icon2 {
+    top: 40%;
+    right: 5%;
+    animation: float 3s ease-in-out infinite 0.5s;
+}
+
+.icon3 {
+    bottom: 20%;
+    right: 20%;
+    animation: float 3s ease-in-out infinite 1s;
+}
+
+
+
+
+@media (max-width: 768px) {
+    .progress-tracking .features-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .progress-tracking .features-text {
+        max-width: 100%;
+    }
+}
+.career-branding, .community-forum {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+}
+
+.career-branding .features-content,
+.community-forum .features-content {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.career-branding .features-text,
+.community-forum .features-text {
+    flex: 1;
+    max-width: 500px;
+}
+
+.career-branding h3,
+.community-forum h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 42px;
+    color: #2B2F4A;
+    margin-bottom: 20px;
+}
+
+.career-branding .orange-text,
+.community-forum .orange-text {
+    color: #F4A424;
+}
+
+.career-branding p,
+.community-forum p {
+    color: #666;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.career-branding .features-image,
+.community-forum .features-image {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.career-branding .features-image img,
+.community-forum .features-image img {
+    max-width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 768px) {
+    .career-branding .features-content,
+    .community-forum .features-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .career-branding .features-text,
+    .community-forum .features-text {
+        max-width: 100%;
+    }
+}
+
+.steps-points {
+    padding: 100px 0;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.steps-points .features-content {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.steps-points .features-text {
+    flex: 1;
+    max-width: 500px;
+}
+
+.steps-points h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 42px;
+    color: #2B2F4A;
+    margin-bottom: 20px;
+}
+
+.steps-points .orange-text {
+    color: #F4A424;
+}
+
+.steps-points p {
+    color: #666;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.get-points-btn {
+    background: transparent;
+    border: 2px solid #F4A424;
+    color: #F4A424;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.get-points-btn:hover {
+    background: #F4A424;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .steps-points .features-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .steps-points .features-text {
+        max-width: 100%;
+    }
+}
+
+.testimonial-image {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.testimonial-image img {
+    width: auto;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.testimonial-card {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.testimonial-card-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.testimonial-image {
+    flex: 0 0 auto;
+    width: 200px;
+}
+
+.testimonial-image img {
+    width: auto;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.testimonial-text-content {
+    flex: 1;
+}
+
+.testimonial-text {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.testimonial-author h4 {
+    color: #2B2F4A;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.rating {
+    color: #F4A424;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+
+.testimonials {
+    padding: 100px 0;
+    background: #fff;
+    position: relative;
+}
+
+.testimonial-content {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.testimonial-text {
+    flex: 1;
+    max-width: 400px;
+}
+
+.testimonial-text h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 42px;
+    color: #2B2F4A;
+    margin-bottom: 20px;
+}
+
+.testimonial-text p {
+    color: #666;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.write-review-btn {
+    display: inline-flex;
+    align-items: center;
+    color: #F4A424;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 20px;
+    gap: 8px;
+}
+
+.testimonial-cards {
+    flex: 1;
+    position: relative;
+}
+
+.testimonial-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.testimonial-card .testimonial-image {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.testimonial-card .testimonial-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.testimonial-card .testimonial-content p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.testimonial-author h4 {
+    color: #2B2F4A;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.rating {
+    color: #F4A424;
+    font-size: 16px;
+    margin-top: 5px;
+}
+</style>
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="navbar">
+        <img src="../../images/logo.png" alt="Logo" class="logo">
+        <div class="nav-links">
+            <input type="search" placeholder="What do you want to learn?" class="search-bar">
+            <a href="#">Learning Path</a>
+            <a href="#">Education</a>
+            <a href="#">Program</a>
+        </div>
+        <div class="auth-buttons">
+            <button class="login-btn">Login</button>
+            <button class="register-btn">Register</button>
+        </div>
+    </nav>
+
+    <!-- header -->
+    <div class="header">
+        <div class="header-left">
+            <h1>Improve Your Skills and Build Your Career With <span>Langkah Kerja</span></h1>
+            <p>Enhance your skills and take your career to the next level with Job Step. Find tailored resources, practical guidance, and expert insights to help you thrive as a professional in an ever-evolving digital world.</p>
+            <a href="#" class="join-button">Join for free</a>
+        </div>
+        <div class="header-right">
+            <img src="../../images/header-bg.png" alt="Student">
+        </div>
+    </div>
+
+    <!-- trusted companies section -->
+    <div class="trusted-section">
+        <p>Trusted by 5,000+ Companies Worldwide</p>
+        <div class="company-logos">
+            <img src="../../images/google-2015 1.png" alt="Google">
+            <img src="../../images/netflix-3 1.png" alt="Netflix">
+            <img src="../../images/airbnb 1.png" alt="Airbnb">
+            <img src="../../images/amazon-2 (1) 1.png" alt="Amazon">
+            <img src="../../images/facebook.png" alt="Facebook">
+            <img src="../../images/grab-logo.png" alt="Grab">
+        </div>
+    </div>
+
+    <!-- what is section -->
+    <div class="what-is-section">
+        <h2>What is <span>Langkah Kerja</span>?</h2>
+        <p>Langkah Kerja is an innovative platform that bridges education and industry in the IT field, offering self-paced learning, progress tracking, and career dashboards to prepare users for the global job market. Start your journey today as an instructor or student!</p>
+        
+        <div class="role-cards">
+            <div class="role-card instructor">
+                <h3>FOR INSTRUCTOR</h3>
+                <button class="role-btn">Start a Class Today</button>
+            </div>
+            <div class="role-card student">
+                <h3>FOR STUDENTS</h3>
+                <button class="role-btn">Enter access code</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- classroom comparison section -->
+    <div class="classroom-section">
+        <div class="classroom-content">
+            <h2>Everything you can do in a physical classroom, <span>you can do with Langkah Kerja</span></h2>
+            <p>With <strong>Langkah Kerja</strong>, the boundaries of the traditional classroom are gone. From interactive learning and skill development to real-time progress tracking and career development, everything you can achieve in a physical classroom is now accessible anytime, anywhere. Experience the perfect blend of education and technology designed to empower your journey in the IT world!</p>
+            <a href="#" class="learn-more">Learn more</a>
+        </div>
+        <div class="classroom-image">
+            <img src="../../images/Group-17.png" alt="Classroom Experience">
+        </div>
+    </div>
+
+    <!-- learning path section -->
+    <div class="learning-path-section">
+        <h2>Learning Path</h2>
+        <p>Learning path will help you in learning at the Academy with a curriculum developed together with leading industry players.</p>
+        
+    
+
+        <!-- partner badges -->
+        <div class="partner-badges">
+            <img src="../../images/academy-googleatp-3.png.png" alt="Google Developers Authorized Training Partner">
+            <img src="../../images/google-cloud-partner.png.png" alt="Google Cloud Partner">
+            <img src="../../images/google-for-education-partner.jpg.png" alt="Google for Education Partner">
+            <img src="../../images/aws-partner.png.png" alt="AWS Partner">
+        </div>
+
+        <!-- company logos -->
+        <div class="company-path-logos">
+            <div class="logo-card"><img src="../../images/homepage-partner-google.png.png" alt="Google"></div>
+            <div class="logo-card"><img src="../../images/homepage-partner-microsoft.png.png" alt="Microsoft"></div>
+            <div class="logo-card"><img src="../../images/homepage-partner-aws.png.png" alt="AWS"></div>
+            <div class="logo-card"><img src="../../images/homepage-partner-ibm.png.png" alt="IBM"></div>
+            <div class="logo-card"><img src="../../images/homepage-partner-line.png.png" alt="LINE"></div>
+        </div>
+    </div>
+
+    
+    <!-- learning paths -->
+    <div class="learning-paths">
+        <div class="path-card">
+            <img src="../../images/homepage-lp-android-developer-3.jpg.png" alt="Android Developer">
+            <img src="../../images/dos-android_developer_logo_300124171945.png.png" alt="" class="badge">
+            <h3>Android Developer</h3>
+        </div>
+        <div class="path-card">
+            <img src="../../images/homepage-lp-back-end-developer-2.jpg.png" alt="Back-End Developer">
+            <img src="../../images/dos-back_end_developer_logo_300124172220.png.png" alt="" class="badge">
+            <h3>Back-End Developer</h3>
+        </div>
+        <div class="path-card">
+            <img src="../../images/homepage-lp-front-end-web-developer-2.jpg.png" alt="Front-End Web Developer">
+            <img src="../../images/dos-front_end_web_developer_logo_300124172039.png.png" alt="" class="badge">
+            <h3>Front-End Web Developer</h3>
+        </div>
+        <div class="path-card">
+            <img src="../../images/homepage-lp-ios-developer-2.jpg.png" alt="iOS Developer">
+            <img src="../../images/dos-android_developer_logo_300124171945.png.png" alt="" class="badge">
+            <h3>iOS Developer</h3>
+        </div>
+    </div>
+
+    <!-- fullstack developer section -->
+    <div class="fullstack-section">
+        <div class="fullstack-left">
+            <div class="fullstack-details">
+                <h2>Full Stack Developer</h2>
+                <div class="class-info">
+                    <div class="info-item">
+                        <i class="far fa-book"></i>
+                        <span>6 kelas</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="far fa-users"></i>
+                        <span>296k siswa belajar di learning path ini</span>
+                    </div>
+                </div>
+                <p>Kurikulum didesain dengan persetujuan dari Tim Google untuk mempersiapkan full stack developer standar Global. Langkah Kerja adalah Google Developer Authorized Training Partner.</p>
+            </div>
+        </div>
+
+        <div class="fullstack-right">
+            <div class="learning-cards">
+                <div class="learning-card">
+                    <div class="card-header">
+                        <img src="../../images/memulai_pemrogramman_dengan_kotlin_logo_230421132137.jpg.png" alt="Dasar Pemrogramman">
+                        <span class="level-tag">Level 1</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Langkah 1</p>
+                        <h4>Dasar Pemrogramman</h4>
+                        <div class="card-info">
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5</span>
+                            </div>
+                            <div class="level">
+                                <span>Dasar</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="learning-card">
+                    <div class="card-header">
+                        <img src="../../images/belajar_fundamental_aplikasi_android_logo_230421132359.jpg.png" alt="Pemrograman Web">
+                        <span class="level-tag">Level 2</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Langkah 2</p>
+                        <h4>Pemrograman Web</h4>
+                        <div class="card-info">
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5</span>
+                            </div>
+                            <div class="level">
+                                <span>Dasar</span>
+                            </div>
+                        </div>         
+                    </div>
+                </div>
+
+                <div class="learning-card">
+                    <div class="card-header">
+                        <img src="../../images/belajar_membuat_aplikasi_android_untuk_pemula_logo_230421132330.jpg.png" alt="Object Oriented">
+                        <span class="level-tag">Level 3</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Langkah 3</p>
+                        <h4>Object Oriented</h4>
+                        <div class="card-info">
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5</span>
+                            </div>
+                            <div class="level">
+                                <span>Dasar</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<section class="features">
+    <div class="container">
+        <div class="features-header">
+            <h2>Our <span>Features</span></h2>
+            <p>This very extraordinary feature, can make learning activities more efficient</p>
+        </div>
+        
+        <div class="features-content">
+            <div class="features-image">
+                <div class="decorative-circle"></div>
+                <div class="decorative-dot"></div>
+                <div class="video-window">
+                    <div class="window-header">
+                        <div class="window-controls">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="video-grid">
+                        <div class="instructor-wrapper">
+                            <div class="instructor-card">
+                                <img src="../../images/portrait-teacher-giving-online-class 1.png" alt="Profile 1">
+                                <div class="user-tag instructor-tag">
+                                    <span class="icon">⚡</span>
+                                    <span class="text">Instructor</span>
+                                    <span class="name">Eveny Howard</span>
+                                </div>
+                            </div>
+                            <div class="action-buttons">
+                                <button class="btn-present">Present</button>
+                                <button class="btn-call">
+                                    <span class="call-icon">📞</span>
+                                    Call
+                                </button>
+                            </div>
+                        </div>
+                        <div class="students-container">
+                            <div class="student-card top-left">
+                                <img src="../../images/image 7.png" alt="Tamara Chen">
+                                <div class="signal-icon">⚡</div>
+                                <div class="student-name">Tamara Chen</div>
+                            </div>
+                            <div class="student-card top-right">
+                                <img src="../../images/image 8.png" alt="Adam Levin">
+                                <div class="signal-icon">⚡</div>
+                                <div class="student-name">Adam Levin</div>
+                            </div>
+                            <div class="student-card bottom-left">
+                                <img src="../../images/image 10.png" alt="Humbert Low">
+                                <div class="signal-icon">⚡</div>
+                                <div class="student-name">Humbert Low</div>
+                            </div>
+                            <div class="student-card bottom-right">
+                                <img src="../../images/image 11.png" alt="Patricia Mendoza">
+                                <div class="signal-icon">⚡</div>
+                                <div class="student-name">Patricia Mendoza</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-text">
+                <h3>Self-paced Learning</h3>
+                <h4 class="modules">Modules</h4>
+                <p>Designed for flexibility, these modules enable users to learn at their own pace, tailored to industry needs and current development, and facilitate effective skill development.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="progress-tracking">
+    <div class="container">
+        <div class="features-content">
+            <div class="features-text">
+                <h3>Progress Tracking <span class="orange-text">System</span></h3>
+                <p>This feature provides insight into the user's learning progress, helping to identify areas that need improvement. With real-time feedback, users can focus on aspects that require more attention, ensuring more effective and sustainable learning.</p>
+            </div>
+            <div class="features-image">
+                <img src="../../images/Group 122.png" alt="Progress Tracking">
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="career-branding">
+    <div class="container">
+        <div class="features-content">
+            <div class="features-image">
+                <img src="../../images/Performance.png" alt="Career Dashboard">
+                <div class="floating-icon icon1">📊</div>
+                <div class="floating-icon icon2">📈</div>
+                <div class="floating-icon icon3">🎯</div>
+            </div>
+            <div class="features-text">
+                <h3>Career and Branding <span class="orange-text">Dashboard</span></h3>
+                <p>This feature facilitates the transition from education to work with a branding system that includes ratings and certifications, strengthening the user's credibility in the job market.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="community-forum">
+    <div class="container">
+        <div class="features-content">
+            <div class="features-text">
+                <h3>Community <span class="orange-text">Forum</span></h3>
+                <p>This feature builds a professional network that supports career and personal growth through discussions, collaborations, and shared challenges, opening up opportunities for joint projects and innovation.</p>
+            </div>
+            <div class="features-image">
+                <img src="../../images/Group 92.png" alt="Community Forum">
+                <div class="floating-icon icon1">💬</div>
+                <div class="floating-icon icon2">🤝</div>
+                <div class="floating-icon icon3">🌟</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="steps-points">
+    <div class="container">
+        <div class="features-content">
+            <div class="features-image">
+                <img src="../../images/Group 106.png" alt="STEPS Points Interface">
+            </div>
+            <div class="features-text">
+                <h3>STEPS Points and Project <span class="orange-text">Certification</span></h3>
+                <p>Users can collect STEPS Points from learning activities and exchange them for premium modules, certifications, or attractive prizes. Project certifications provide official recognition, strengthen portfolios, and motivate consistent learning.</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <button class="get-points-btn">See more features</button>
+        </div>
+    </div>
+</section>
+
+<section class="testimonials">
+    <div class="container">
+        <div class="testimonial-content">
+            <div class="testimonial-text">
+                <h3>What They Say?</h3>
+                <p>Langkah Kerja has got more than 100k positive ratings from our users around the world.</p>
+                <p>Some of the students and teachers were greatly helped by the Langkah Kerja.</p>
+                <p>Are you too? Please give your assessment</p>
+                <a href="#" class="write-review-btn">Write your assessment <span>→</span></a>
+            </div>
+            <div class="testimonial-cards">
+                <div class="testimonial-card active">
+                    <div class="testimonial-card-content">
+                        <div class="testimonial-image">
+                            <img src="../../images/smiling-woman-with-afro-posing-pink-sweater 1.png" alt="Testimonial">
+                        </div>
+                        <div class="testimonial-text-content">
+                            <p class="testimonial-text">"Thank you so much for your help. It's exactly what I've been looking for. You won't regret it. It really saves me time and effort. LangKerja is exactly what our business has been lacking."</p>
+                            <div class="testimonial-author">
+                                <h4>Gloria Rose</h4>
+                                <div class="rating">
+                                    ★★★★★ <span>12 reviews at Yelo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="latest-news">
+    <div class="container">
+        <div class="latest-header">
+            <h2>Lastest</h2>
+            <h3>News and Resources</h3>
+            <p>See the developments that have occurred to LearnEasers in the world</p>
+        </div>
+
+        <div class="news-content">
+            <div class="news-main">
+                <div class="news-image">
+                    <img src="../../images/Group 40.png" alt="Students studying">
+                    <span class="tag">NEWS</span>
+                </div>
+                <div class="news-text">
+                    <h4>Revolutionizing Education: Virtual Classes Redefining Learning Landscape</h4>
+                    <p>As virtual classes become the new norm, this article explores their impact on traditional education models,</p>
+                    <a href="#" class="read-more">Read more</a>
+                </div>
+            </div>
+
+            <div class="news-list">
+                <div class="news-item">
+                    <div class="news-item-image">
+                        <img src="../../images/Rectangle 33.png" alt="Virtual classroom">
+                        <span class="tag">PRESS RELEASE</span>
+                    </div>
+                    <div class="news-item-content">
+                        <h5>From Classroom to Clicks: How Virtual Classes Are Bridging Educational Gaps</h5>
+                        <p>Discover how virtual classes are breaking down geographical barriers, ...</p>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-item-image">
+                        <img src="../../images/Rectangle 34.png" alt="Online learning">
+                        <span class="tag">NEWS</span>
+                    </div>
+                    <div class="news-item-content">
+                        <h5>Elevating Learning: Virtual Classes Enriching Education</h5>
+                        <p>This piece delves into the immersive experience of virtual classes, discussing</p>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-item-image">
+                        <img src="../../images/Rectangle 37.png" alt="Virtual education">
+                        <span class="tag">NEWS</span>
+                    </div>
+                    <div class="news-item-content">
+                        <h5>Learning Unleashed: Virtual Classes Empowering Lifelong Education</h5>
+                        <p>Explore the empowering impact of virtual classes in fostering continuous learning ..</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.latest-news {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.latest-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.latest-header h2 {
+    color: #F4A424;
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.latest-header h3 {
+    color: #2B2F4A;
+    font-family: 'Outfit', sans-serif;
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.latest-header p {
+    color: #666;
+    font-size: 16px;
+}
+
+.news-content {
+    display: flex;
+    gap: 40px;
+}
+
+.news-main {
+    flex: 1;
+    max-width: 600px;
+}
+
+.news-main .news-image {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.news-main .news-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.news-text h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+    color: #2B2F4A;
+    margin-bottom: 15px;
+}
+
+.news-text p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.read-more {
+    color: #666;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.news-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.news-item {
+    display: flex;
+    gap: 20px;
+}
+
+.news-item-image {
+    position: relative;
+    flex: 0 0 200px;
+}
+
+.news-item-image img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #F4A424;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.news-item-content {
+    flex: 1;
+}
+
+.news-item-content h5 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    color: #2B2F4A;
+    margin-bottom: 10px;
+}
+
+.news-item-content p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .news-content {
+        flex-direction: column;
+    }
+
+    .news-main {
+        max-width: 100%;
+    }
+
+    .news-item-image {
+        flex: 0 0 150px;
+    }
+}
+</style>
+</body>
+</html>
