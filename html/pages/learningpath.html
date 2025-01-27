@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Learning Path</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            height: 54px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .search-bar {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            width: 250px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666666;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .login-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: none;
+            color: #666666;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .register-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background-color: #2C5CC5;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .footer {
+            background: linear-gradient(180deg, rgba(124, 210, 247, 0.9) 0%, rgba(123, 158, 243, 0.9) 100%);
+            border-radius: 40px 40px 0 0;
+            padding: 60px 0 20px;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            z-index: 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-left {
+            max-width: 380px;
+        }
+
+        .logo-container {
+            background: #fff;
+            padding: 8px 16px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 24px;
+        }
+
+        .footer-logo {
+            height: 32px;
+        }
+
+        .company-address {
+            color: #fff;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-link {
+            color: #fff;
+            font-size: 20px;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .social-link:hover {
+            opacity: 1;
+        }
+
+        .footer-brand h3 {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .footer-brand p {
+            color: #fff;
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-awards h3 {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .award-image img {
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 40px;
+        }
+
+        .copyright p {
+            color: #fff;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            .footer-left {
+                grid-column: 1 / -1;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                padding: 0 20px;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .footer-brand,
+            .footer-links,
+            .footer-awards {
+                text-align: center;
+            }
+
+            .award-image {
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+        .learning-path-header {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .path-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .path-tab {
+            padding: 8px 20px;
+            background-color: #f5f5f5;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #666;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .path-tab.active {
+            background-color: #2C5CC5;
+            color: white;
+        }
+
+        .path-content h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .path-content p {
+            color: #666;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .learning-path-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .path-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .path-center {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .path-divider {
+            width: 4px;
+            height: 100%;
+            background: #2C5CC5;
+            border-radius: 2px;
+        }
+
+        .center-content {
+            max-width: 400px;
+            text-align: left;
+        }
+
+        .center-content h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 16px;
+        }
+
+        .center-content p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .enrollment-stats {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666666;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 992px) {
+            .path-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .path-center {
+                flex-direction: row;
+                padding: 20px 0;
+            }
+
+            .path-divider {
+                width: 100%;
+                height: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+ <!-- navbar -->
+ <nav class="navbar">
+    <img src="../../images/logo.png" alt="Logo" class="logo">
+    <div class="nav-links">
+        <input type="search" placeholder="What do you want to learn?" class="search-bar">
+        <a href="../pages/learningpath.html">Learning Path</a>
+        <a href="#">Education</a>
+        <a href="#">Program</a>
+    </div>
+    <div class="auth-buttons">
+        <button class="login-btn">Login</button>
+        <button class="register-btn">Register</button>
+    </div>
+</nav>
+
+<!-- Learning Path Header -->
+<div class="learning-path-header">
+    <div class="path-tabs">
+        <a href="#" class="path-tab">Data Scientist</a>
+        <a href="#" class="path-tab active">Front-End Web</a>
+        <a href="#" class="path-tab">Back-End JavaScript</a>
+    </div>
+    
+    <div class="path-content">
+        <h1>Front-End Web Developer</h1>
+        <p>Kurikulum disusun oleh Dicoding dan pelaku industri di bidang Web Development. Siswa dipersiapkan untuk<br>
+        menjadi Front-End Web Developer sesuai standar kebutuhan industri.</p>
+    </div>
+</div>
+
+<!-- Learning Path Content -->
+<div class="learning-path-content">
+    <div class="path-grid">
+        <!-- Left Card -->
+        <div class="path-card">
+            <div class="path-info">
+                <div class="path-details">
+                    <h3>Langkah 1</h3>
+                    <div class="path-stats">
+                        <span>45 Jam</span>
+                        <span>•</span>
+                        <span>4,87</span>
+                        <span>•</span>
+                        <span>Dasar</span>
+                    </div>
+                    <div class="enrollment-stats">
+                        <span>1.31 Modul</span>
+                        <span>•</span>
+                        <span>205.760 Siswa Terdaftar</span>
+                    </div>
+                </div>
+                <div class="path-description">
+                    <p>Belajar Dasar Pemrograman Web</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Content -->
+        <div class="path-center">
+            <div class="path-divider"></div>
+            <div class="center-content">
+                <h2>Buat Web Pertamamu di Sini</h2>
+                <p>Belajar dasar adalah langkah yang tidak boleh dilewatkan untuk mahir di bidang apa pun. Di sini, Anda akan belajar dasar dari HTML dan CSS sebagai pilar pembentuk website.</p>
+            </div>
+        </div>
+
+        <!-- Right Card -->
+        <div class="path-card">
+            <div class="path-info">
+                <!-- Right card content can be added here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <!-- Logo and Company Info -->
+            <div class="footer-left">
+                <div class="logo-container">
+                    <img src="../../images/logo.png" alt="Langkah Kerja" class="footer-logo">
+                </div>
+                <p class="company-address">
+                    Langkah Kerja Space<br>
+                    Jalan Dr. T. Mansur No.9, Padang Bulan, Kec.<br>
+                    Medan Baru, Kota Medan, Sumatera Utara 20222
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+
+            <!-- Center Links -->
+            <div class="footer-center">
+                <div class="footer-brand">
+                    <h3>Langkah Kerja</h3>
+                    <p>Pasti Ada Langkah Untuk Kerja</p>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Right Links -->
+            <div class="footer-right">
+                <ul class="footer-links">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- Awards Section -->
+            <div class="footer-awards">
+                <h3>Penghargaan</h3>
+                <div class="award-image">
+                    <img src="../../images/aba-2019-2.png.png" alt="ASEAN Award">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Copyright -->
+    <div class="copyright">
+        <p>© 2025 Langkah Kerja.</p>
+    </div>
+</footer>
+
+</body>
+</html>

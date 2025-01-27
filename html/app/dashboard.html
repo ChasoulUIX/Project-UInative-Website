@@ -1364,6 +1364,144 @@
     font-size: 16px;
     margin-top: 5px;
 }
+
+.latest-news {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.latest-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.latest-header h2 {
+    color: #F4A424;
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.latest-header h3 {
+    color: #2B2F4A;
+    font-family: 'Outfit', sans-serif;
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.latest-header p {
+    color: #666;
+    font-size: 16px;
+}
+
+.news-content {
+    display: flex;
+    gap: 40px;
+}
+
+.news-main {
+    flex: 1;
+    max-width: 600px;
+}
+
+.news-main .news-image {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.news-main .news-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.news-text h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+    color: #2B2F4A;
+    margin-bottom: 15px;
+}
+
+.news-text p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.read-more {
+    color: #666;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.news-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.news-item {
+    display: flex;
+    gap: 20px;
+}
+
+.news-item-image {
+    position: relative;
+    flex: 0 0 200px;
+}
+
+.news-item-image img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #F4A424;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.news-item-content {
+    flex: 1;
+}
+
+.news-item-content h5 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    color: #2B2F4A;
+    margin-bottom: 10px;
+}
+
+.news-item-content p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .news-content {
+        flex-direction: column;
+    }
+
+    .news-main {
+        max-width: 100%;
+    }
+
+    .news-item-image {
+        flex: 0 0 150px;
+    }
+}
 </style>
 </head>
 <body>
@@ -1372,7 +1510,7 @@
         <img src="../../images/logo.png" alt="Logo" class="logo">
         <div class="nav-links">
             <input type="search" placeholder="What do you want to learn?" class="search-bar">
-            <a href="#">Learning Path</a>
+            <a href="../pages/learningpath.html">Learning Path</a>
             <a href="#">Education</a>
             <a href="#">Program</a>
         </div>
@@ -1820,144 +1958,236 @@
     </div>
 </section>
 
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <!-- Logo and Company Info -->
+            <div class="footer-left">
+                <div class="logo-container">
+                    <img src="../../images/logo.png" alt="Langkah Kerja" class="footer-logo">
+                </div>
+                <p class="company-address">
+                    Langkah Kerja Space<br>
+                    Jalan Dr. T. Mansur No.9, Padang Bulan, Kec.<br>
+                    Medan Baru, Kota Medan, Sumatera Utara 20222
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+
+            <!-- Center Links -->
+            <div class="footer-center">
+                <div class="footer-brand">
+                    <h3>Langkah Kerja</h3>
+                    <p>Pasti Ada Langkah Untuk Kerja</p>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Right Links -->
+            <div class="footer-right">
+                <ul class="footer-links">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- Awards Section -->
+            <div class="footer-awards">
+                <h3>Penghargaan</h3>
+                <div class="award-image">
+                    <img src="../../images/aba-2019-2.png.png" alt="ASEAN Award">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Copyright -->
+    <div class="copyright">
+        <p>© 2025 Langkah Kerja.</p>
+    </div>
+</footer>
+
 <style>
-.latest-news {
-    padding: 80px 0;
-    background: #fff;
-}
-
-.latest-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.latest-header h2 {
-    color: #F4A424;
-    font-family: 'Outfit', sans-serif;
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.latest-header h3 {
-    color: #2B2F4A;
-    font-family: 'Outfit', sans-serif;
-    font-size: 36px;
-    margin-bottom: 15px;
-}
-
-.latest-header p {
-    color: #666;
-    font-size: 16px;
-}
-
-.news-content {
-    display: flex;
-    gap: 40px;
-}
-
-.news-main {
-    flex: 1;
-    max-width: 600px;
-}
-
-.news-main .news-image {
+.footer {
+    background: linear-gradient(180deg, rgba(124, 210, 247, 0.9) 0%, rgba(123, 158, 243, 0.9) 100%);
+    border-radius: 40px 40px 0 0;
+    padding: 60px 0 20px;
+    margin-top: 80px;
     position: relative;
-    margin-bottom: 20px;
+    overflow: hidden;
 }
 
-.news-main .news-image img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 15px;
-}
-
-.news-text h4 {
-    font-family: 'Outfit', sans-serif;
-    font-size: 24px;
-    color: #2B2F4A;
-    margin-bottom: 15px;
-}
-
-.news-text p {
-    color: #666;
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.read-more {
-    color: #666;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.news-list {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.news-item {
-    display: flex;
-    gap: 20px;
-}
-
-.news-item-image {
-    position: relative;
-    flex: 0 0 200px;
-}
-
-.news-item-image img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.tag {
+.footer::before {
+    content: '';
     position: absolute;
-    top: 15px;
-    left: 15px;
-    background: #F4A424;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    z-index: 0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 40px;
+}
+
+.footer-left {
+    max-width: 380px;
+}
+
+.logo-container {
+    background: #fff;
+    padding: 8px 16px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 24px;
+}
+
+.footer-logo {
+    height: 32px;
+}
+
+.company-address {
     color: #fff;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 500;
-}
-
-.news-item-content {
-    flex: 1;
-}
-
-.news-item-content h5 {
-    font-family: 'Outfit', sans-serif;
-    font-size: 18px;
-    color: #2B2F4A;
-    margin-bottom: 10px;
-}
-
-.news-item-content p {
-    color: #666;
     font-size: 14px;
     line-height: 1.6;
+    margin-bottom: 24px;
+    opacity: 0.9;
 }
 
-@media (max-width: 768px) {
-    .news-content {
-        flex-direction: column;
+.social-links {
+    display: flex;
+    gap: 16px;
+}
+
+.social-link {
+    color: #fff;
+    font-size: 20px;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+}
+
+.social-link:hover {
+    opacity: 1;
+}
+
+.footer-brand h3 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.footer-brand p {
+    color: #fff;
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 24px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 16px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
+.footer-awards h3 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.award-image img {
+    height: 80px;
+    object-fit: contain;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 40px;
+}
+
+.copyright p {
+    color: #fff;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+@media (max-width: 992px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
     }
 
-    .news-main {
+    .footer-left {
+        grid-column: 1 / -1;
         max-width: 100%;
     }
+}
 
-    .news-item-image {
-        flex: 0 0 150px;
+@media (max-width: 576px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-container {
+        padding: 0 20px;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-brand,
+    .footer-links,
+    .footer-awards {
+        text-align: center;
+    }
+
+    .award-image {
+        display: flex;
+        justify-content: center;
     }
 }
 </style>
+
 </body>
 </html>
